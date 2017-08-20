@@ -3,6 +3,9 @@
   <img src='https://raw.githubusercontent.com/mhinz/vim-galore/master/static/images/logo-vim-galore.png' alt='vim-galore logo' />
   <br /><br /><br /><br />
   <div>
+    <a href='https://github.com/mhinz/vim-galore'>
+        <img src='https://img.shields.io/badge/Version:-Original-blue.svg' alt='version: original' />
+    </a>
     <a href='https://github.com/wsdjeg/vim-galore-zh_cn'>
       <img src='https://img.shields.io/badge/Translation:-Chinese-grey.svg' alt='translation: chinese' />
     </a>
@@ -20,14 +23,14 @@
   <br /><br />
 </div>
 
-### [Intro](#intro-1)
+### [소개](#intro-1)
 
-- [What is Vim?](#what-is-vim)
-- [The Vim Philosophy](#the-vim-philosophy)
-- [First steps](#first-steps)
-- [Minimal vimrc](#minimal-vimrc)
-- [What kind of Vim am I running?](#what-kind-of-vim-am-i-running)
-- [Cheatsheets](#cheatsheets)
+- [Vim이란 무엇인가?](#what-is-vim)
+- [Vim의 기본 원칙](#the-vim-philosophy)
+- [첫 걸음](#first-steps)
+- [최소 vimrc](#minimal-vimrc)
+- [현재 어떤 Vim이 실행중인가?](#what-kind-of-vim-am-i-running)
+- [치트시트](#cheatsheets)
 
 ### [Basics](#basics-1)
 
@@ -136,60 +139,51 @@
 
 <br>
 
-# Intro
+# 소개
 
-## What is Vim?
+## Vim이란?
 
 [Vim](http://www.vim.org) is a text editor with a long line of ancestors that
 goes back to [qed](https://en.wikipedia.org/wiki/QED_(text_editor)). [Bram
 Moolenaar](https://en.wikipedia.org/wiki/Bram_Moolenaar) released it in 1991.
 
-The project is hosted online at [vim.org](http://www.vim.org/index.php).
+이 프로젝트는 [vim.org](http://www.vim.org/index.php)에서 주최되었습니다.
 
-Getting Vim: Use your favourite package manager or visit the [download
-page](http://www.vim.org/download.php) from vim.org.
+Vim 얻기: 좋아하는 패키지 관리자를 사용하거나, vim.org의 [download 페이지] (http://www.vim.org/download.php)
+를 방문하십시오.
 
-Discussions and user questions are best done on the
-[vim_use](https://groups.google.com/forum/#!forum/vim_use) mailing list or using
-IRC ([Freenode](https://freenode.net)) in the `#vim` channel.
+토론 및 사용자 질문은 [vim_use](https://groups.google.com/forum/#!forum/vim_use) 메일링 리스트 
+또는 `#vim` 채널에서 IRC ([Freenode](https://freenode.net))를 사용하는 것이 좋습니다. 
 
-Development happens on [Github](https://github.com/vim/vim), discussions on the
-[vim_dev](https://groups.google.com/forum/#!forum/vim_dev) mailing list.
+개발은 [Github](https://github.com/vim/vim)에서 이루어지며, 토론은 [vim_dev
+](https://groups.google.com/forum/#!forum/vim_dev) 메일링 리스트에서 진행됩니다.
 
-Read [Why, oh WHY, do those #?@! nutheads use
-vi?](http://www.viemu.com/a-why-vi-vim.html) to see common misconceptions about
-Vim explained.
+Vim이 설명한 일반적인 오해를 보려면 [Why, oh WHY, do those #?@! nutheads use vi?
+](http://www.viemu.com/a-why-vi-vim.html)을 읽어라.
 
-## The Vim Philosophy
+## Vim의 기본 원칙
 
-Vim adheres to the modal editing philosophy. This means that it provides
-multiple modes and the meaning of keys changes according to the mode. You
-navigate files in _normal mode_, you insert text in _insert mode_, you select
-lines in _visual mode_, you access commands in _command-line mode_ and so on.
-This might sound complicated at first, but has a huge advantage: you don't have
-to break your fingers by holding several keys at once, most of the time you
-simply press them one after the other. The more common the task, the fewer keys
-are needed.
+Vim은 모달 편집 철학을 고수합니다. 즉, 다양한 모드와 모드에 따라 키의 의미가 변경된다는 뜻입니다.
+_normal mode_ 에서 파일을 탐색하고, _insert mode_ 에서 텍스트를 입력하고, _visual mode_ 에서 
+라인을 선택하고, _command-line mode_ 에서 명령어에 접근하는 등의 작업을 수행합니다. 이것은 처음에는 
+복잡하게 들릴 수도 있지만, 아주 큰 장점이 있습니다. 즉, 한 번에 여러 개의 키를 누를 필요가 없습니다.
+보다 일반적인 작업일수록 더 적은 키를 필요로 합니다.
 
-A related concept that works well with modal editing are operators and motions.
-_Operators_ start a certain action, e.g. changing, removing, or selecting text.
-Afterwards you specify the region of text you want to act on using a _motion_.
-To change everything between parentheses, use `ci(` (read _change inner
-parentheses_). To remove an entire paragraph of text, use `dap` (read _delete
-around paragraph_).
+모달 편집과 잘 작동하는 관련 개념은 연산자(_Operators_)와 동작(_motion_)입니다. _Operators_ 는
+특정 동작(텍스트 변경, 제거 또는 선택)을 시작합니다. 그 후 _motion_ 을 사용하여 작업할 텍스트 영역을
+지정합니다. 괄호로 둘러싸인 부분을 변경하려면 `ci(`를 사용합니다(_change inner parentheses_라고
+읽는다). 텍스트 전체 단락을 제거하려면 `dap`를 사용합니다(_delete around paragrahp_라고 읽는다).
 
-If you see advanced Vim users working, you'll notice that they speak the
-_language of Vim_ as well as pianists handle their instruments. Complex
-operations are done using only a few key presses. They don't even think about it
-anymore as [muscle memory](https://en.wikipedia.org/wiki/Muscle_memory) took
-over already. This reduces [cognitive
-load](https://en.wikipedia.org/wiki/Cognitive_load) and helps to focus on the
-actual task.
+베테랑 Vim 사용자를 보면 마치 피아니스트가 피아노를 자유자재로 치듯 _language of vim_ 를 다루는 것을
+알게 될 것입니다. 복잡한 처리에서도 몇 개의 키 조합만으로 실행할 수 있습니다. 이들의 동작은 이미 [muscle
+ memory](https://en.wikipedia.org/wiki/Muscle_memory)화 하면서 생각할 필요도 없습니다.
+이렇게하면 [인지 부하](https://ko.wikipedia.org/wiki/%EC%9D%B8%EC%A7%80_%EB%B6%80%ED%95%98)
+를 줄이고 실제 업무에 집중하는 데 도움이 됩니다.
 
-## First steps
+## 첫 걸음
 
-Vim comes bundled with an interactive tutorial that teaches the most basic
-things you need to know about. You can start it from the shell:
+Vim은 당신이 알아야 할 가장 기본적인 것을 가르치는 대화식 튜토리얼을 번들로 제공합니다. 아래 명령어로 
+시작할 수 있습니다:
 
 ```
 $ vimtutor
@@ -207,9 +201,9 @@ defaults for all options, opposed to Vim defaults. As long as you didn't create
 a user vimrc yet or started Vim with `vim -N`, compatible mode is assumed! Don't
 use Vim in compatible mode. Just don't.
 
-Next steps:
+다음 단계:
 
-1. Create your own [vimrc](#minimal-vimrc).
+1. 나의 [vimrc](#minimal-vimrc) 만들기.
 2. Have some [cheatsheets](#cheatsheets) ready for the first weeks.
 3. Read through the [basics](#basics-1) section to learn what is even possible.
 4. Learn on demand! You never finish learning Vim. If you encounter any
@@ -232,23 +226,21 @@ You find many "minimal vimrcs" all over the net, and maybe my version isn't as
 minimal as it should be, but it provides a good set of sane settings that I deem
 to be useful for starting out.
 
-Eventually you have to read up on all the mentioned settings anyway and decide
-for yourself. :-)
+결국 언급된 모든 설정을 반드시 읽고 스스로 결정해야 합니다. :-)
 
 So here it is: [minimal-vimrc](static/minimal-vimrc.vim)
 
 In case you're interested, here's
 [my vimrc](https://github.com/mhinz/dotfiles/blob/master/.vim/vimrc).
 
-**TIP**: Most plugin authors maintain several plugins and also publish their
+**팁: Most plugin authors maintain several plugins and also publish their
 vimrc on Github (often in a repository called "vim-config" or "dotfiles"), so
 whenever you find a plugin you like, look up its maintainer's Github page and
 look through the repositories.
 
 ## What kind of Vim am I running?
 
-Looking at `:version` will give you all the information you need to know about
-how the currently running Vim binary was compiled.
+`:version`을 보면 현재 실행되고 있는 Vim 바이너리가 어떻게 컴파일 되었는지 알 수 있습니다.
 
 The first line tells you when the binary was compiled and the version, e.g. 7.4.
 One of the next lines states `Included patches: 1-1051`, which is the patch
@@ -273,7 +265,7 @@ If that's not the case and you installed Vim from a package manager, make sure
 to install a package called `vim-x`, `vim-x11`, `vim-gtk`, `vim-gnome` or
 similar, since these packages usually come with the huge feature set.
 
-You can also test for the version or features programmatically:
+또한 프로그래밍 방식으로 버전이나 기능을 테스트할 수 있습니다. 
 
 ```vim
 " Do something if running at least Vim 7.4.42 with +profile enabled.
@@ -282,7 +274,7 @@ if (v:version > 704 || v:version == 704 && has('patch42')) && has('profile')
 endif
 ```
 
-Help:
+도움:
 
 ```
 :h :version
@@ -291,7 +283,7 @@ Help:
 :h has-patch
 ```
 
-## Cheatsheets
+## 치트시트
 
 - http://people.csail.mit.edu/vgod/vim/vim-cheat-sheet-en.png
 - https://cdn.shopify.com/s/files/1/0165/4168/files/preview.png
@@ -2715,4 +2707,3 @@ Here's a list of commonly used colorschemes:
 - [vividchalk](https://github.com/tpope/vim-vividchalk)
 - [yowish](https://github.com/kabbamine/yowish.vim)
 - [zenburn](https://github.com/jnurmine/Zenburn)
-
